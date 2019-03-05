@@ -65,4 +65,28 @@ function initMap() {
   wardLayer.loadGeoJson("data/toronto-wards.json");
   wardLayer.setStyle({ fillColor: "transparent", strokeColor: "red", strokeWeight: 2, zIndex: 1 });
   wardLayer.setMap(map);
+
+  var libraryLayer = new google.maps.Data();
+  libraryLayer.loadGeoJson("data/toronto-libraries.json")
+  libraryLayer.setStyle({
+    icon: {
+      url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+      scaledSize: new google.maps.Size(32, 32)
+    },
+    zIndex: 2
+  })
+  libraryLayer.addListener('click', clickHandler);
+  libraryLayer.addListener('mouseover', function(e) {
+    libraryLayer.revertStyle();
+    libraryLayer.overrideStyle(e.feature, {
+      icon: {
+        url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+        scaledSize: new google.maps.Size(38, 38)
+      }
+    });
+  });
+  libraryLayer.addListener('mouseout', function(e) {
+    libraryLayer.revertStyle();
+  });
+  libraryLayer.setMap(map);
 }
