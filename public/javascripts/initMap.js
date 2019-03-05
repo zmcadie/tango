@@ -60,4 +60,9 @@ function initMap() {
     map: map
   });
   raKmlLayer.addListener('click', clickHandler);
+
+  var wardLayer = new google.maps.Data();
+  wardLayer.loadGeoJson("data/toronto-wards.json");
+  wardLayer.setStyle({ fillColor: "transparent", strokeColor: "red", strokeWeight: 2, zIndex: 1 });
+  wardLayer.setMap(map);
 }
