@@ -19,6 +19,21 @@ function captureClose() {
 
 document.getElementById("capture-close").addEventListener("click", captureClose);
 
+function clickHandler(event) {
+  var feature = event.featureData;
+  console.log(feature)
+  var name = feature.name;
+  var description = feature.description || "";
+  var nameEl = "<div class='feature-item feature-name'><div class='feature-item-title'>name</div>" + name + "</div>";
+  var descriptionEl = "<div class='feature-item feature-description'><div class='feature-item-title'>description</div>" + description + "</div>";
+  var content = nameEl + descriptionEl;
+  var captureTitle = document.getElementById('capture-title');
+  var captureContent = document.getElementById('capture-content');
+  captureTitle.innerHTML = name;
+  captureContent.innerHTML = content;
+  captureOpen();
+}
+
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     minZoom: 11,
@@ -40,8 +55,9 @@ function initMap() {
   map.data.setStyle({ strokeWeight: 0, fillOpacity: 0.15, clickable: false });
 
   var raKmlLayer = new google.maps.KmlLayer(resedentialAssociationsSrc, {
-    // suppressInfoWindows: true,
+    suppressInfoWindows: true,
     preserveViewport: true,
     map: map
-  })
+  });
+  raKmlLayer.addListener('click', clickHandler);
 }
