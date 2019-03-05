@@ -3,6 +3,22 @@ var resedentialAssociationsSrc = "http://www.google.com/maps/d/u/0/kml?forcekml=
 var torontoCenter = { lat: 43.72, lng: -79.3849 };
 var torontoBounds = { north: 43.9, east: -78.75, south: 43.56, west: -80 };
 
+function captureOpen() {
+  var capture = document.getElementById("capture");
+  if (!capture.classList.contains("open")) {
+    capture.classList.add("open");
+  }
+}
+
+function captureClose() {
+  var capture = document.getElementById("capture");
+  if (capture.classList.contains("open")) {
+    capture.classList.remove("open");
+  }
+}
+
+document.getElementById("capture-close").addEventListener("click", captureClose);
+
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     minZoom: 11,

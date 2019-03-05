@@ -17,3 +17,71 @@ body {
   width: 100%;
   z-index: 1;
 }
+
+#capture {
+  background-color: white;
+  border-right: 1px solid #333;
+  color: #444;
+  font-family: Roboto,Arial,sans-serif;
+  height: 100%;
+  left: -301px;
+  overflow: hidden;
+  position: absolute;
+  transition: left 0.5s ease;
+  width: calc(300px - 2px);
+  z-index: 2;
+}
+
+#capture.open {
+  left: 0;
+}
+
+#capture-close {
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  height: 18px;
+  margin-top: -7px;
+  position: absolute;
+  right: 10px;
+  top: 13px;
+}
+
+#capture-title {
+  background: #D63B30;
+  color: white;
+  min-height: 16px;
+  line-height: 16px;
+  padding: 10px;
+  padding-right: 30px;
+}
+
+#capture-content {
+  overflow-wrap: break-word;
+  padding: 10px;
+  width: calc(100% - 20px);
+}
+
+#capture-content > * {
+  width: 100%;
+}
+
+#capture-content .feature-item {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+#capture-content .feature-item:first-child {
+  margin-top: 0;
+}
+
+#capture-content .feature-item-title {
+  color: #aaa;
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+
+#capture-content .feature-item > img {
+  height: auto;
+  max-width: 100%;
+}
