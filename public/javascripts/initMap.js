@@ -17,4 +17,7 @@ function initMap() {
       position: google.maps.ControlPosition.RIGHT_TOP
     }
   });
+
+  map.data.loadGeoJson("data/toronto-boundary.json");
+  map.data.setStyle({ strokeWeight: 0, fillOpacity: 0.15, clickable: false });
 }
