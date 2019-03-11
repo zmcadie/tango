@@ -161,3 +161,8 @@ body {
   background-color: #0008;
   border: 1px solid #000f;
 }
+
+.legend-item-symbol img {
+  height: 25px;
+  margin: 0 -3px -5px -4px;
+}
