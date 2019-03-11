@@ -100,4 +100,28 @@ function initMap() {
     libraryLayer.revertStyle();
   });
   libraryLayer.setMap(map);
+
+  var tdsbLayer = new google.maps.Data();
+  tdsbLayer.loadGeoJson("data/school_tdsb.geojson.json")
+  tdsbLayer.setStyle({
+    icon: {
+      url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+      scaledSize: new google.maps.Size(32, 32)
+    },
+    zIndex: 2
+  })
+  tdsbLayer.addListener('click', clickHandler);
+  tdsbLayer.addListener('mouseover', function(e) {
+    tdsbLayer.revertStyle();
+    tdsbLayer.overrideStyle(e.feature, {
+      icon: {
+        url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+        scaledSize: new google.maps.Size(38, 38)
+      }
+    });
+  });
+  tdsbLayer.addListener('mouseout', function(e) {
+    tdsbLayer.revertStyle();
+  });
+  tdsbLayer.setMap(map);
 }
