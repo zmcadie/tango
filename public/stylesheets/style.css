@@ -1,14 +1,18 @@
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
+  padding: 20px 10%;
+}
+
+.tango-logo-header {
+  margin-bottom: 20px;
 }
 
 #map-container {
   border: 2px solid #333;
   height: 550px;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   overflow: hidden;
   position: relative;
-  width: 80%;
 }
 
 #map {
