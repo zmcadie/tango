@@ -131,35 +131,41 @@ body {
 }
 
 .legend-item-symbol .square {
+  border-width: 2px;
+  border-style: solid;
   display: inline-block;
-  height: 19px;
+  height: 17px;
   margin-bottom: -5px;
-  width: 19px;
+  width: 17px;
 }
 
 .square.blue-square {
   background-color: #00f8;
-  border: 1px solid #00ff;
+  border-color: #00ff;
 }
 
 .square.red-square {
   background-color: #f008;
-  border: 1px solid #f00f;
+  border-color: #f00f;
 }
 
 .square.purple-square {
   background-color: #8088;
-  border: 1px solid #808f;
+  border-color: #808f;
 }
 
 .square.green-square {
   background-color: #0808;
-  border: 1px solid #080f;
+  border-color: #080f;
 }
 
 .square.grey-square {
   background-color: #0008;
-  border: 1px solid #000f;
+  border-color: #000f;
+}
+
+.square.empty {
+  background-color: transparent;
 }
 
 .legend-item-symbol img {
