@@ -110,8 +110,44 @@ body {
   top: 1px;
 }
 
-#legend-container {
+/* #legend-container {
+  margin: 0 auto;
+  max-width: 800px;
+} */
+
+.legend-col {
+  float: left;
   width: 380px;
+}
+
+@media (max-width: 1035px) {
+  .legend-col {
+    float: none;
+  }
+}
+
+@media (min-width: 1135px) {
+  .legend-col-2 {
+    margin-left: 140px;
+  }
+}
+
+@media (min-width: 1085px) and (max-width: 1145px) {
+  .legend-col-2 {
+    margin-left: 90px;
+  }
+}
+
+@media (min-width: 1035px) and (max-width: 1085px) {
+  .legend-col-2 {
+    margin-left: 40px;
+  }
+}
+
+@media (max-width: 1035px) {
+  .legend-col-2 {
+    margin-top: 10px;
+  }
 }
 
 .legend-header {
