@@ -148,4 +148,28 @@ function initMap() {
     communityCentresLayer.revertStyle();
   });
   communityCentresLayer.setMap(map);
+
+  var civicCentresLayer = new google.maps.Data();
+  civicCentresLayer.loadGeoJson("data/civic_centres.geojson.json")
+  civicCentresLayer.setStyle({
+    icon: {
+      url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png",
+      scaledSize: new google.maps.Size(32, 32)
+    },
+    zIndex: 2
+  })
+  civicCentresLayer.addListener('click', clickHandler);
+  civicCentresLayer.addListener('mouseover', function(e) {
+    civicCentresLayer.revertStyle();
+    civicCentresLayer.overrideStyle(e.feature, {
+      icon: {
+        url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png",
+        scaledSize: new google.maps.Size(38, 38)
+      }
+    });
+  });
+  civicCentresLayer.addListener('mouseout', function(e) {
+    civicCentresLayer.revertStyle();
+  });
+  civicCentresLayer.setMap(map);
 }
