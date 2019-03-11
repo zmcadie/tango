@@ -45,6 +45,10 @@ function clickHandler(event) {
   captureOpen();
 }
 
+function toggleLayer(element, layer, map) {
+  element.checked ? layer.setMap(map) : layer.setMap(null);
+}
+
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     minZoom: 11,
@@ -75,7 +79,6 @@ function initMap() {
   var wardLayer = new google.maps.Data();
   wardLayer.loadGeoJson("data/toronto-wards.json");
   wardLayer.setStyle({ fillColor: "transparent", strokeColor: "red", strokeWeight: 2, zIndex: 1 });
-  wardLayer.setMap(map);
 
   var libraryLayer = new google.maps.Data();
   libraryLayer.loadGeoJson("data/toronto-libraries.json")
@@ -172,4 +175,7 @@ function initMap() {
     civicCentresLayer.revertStyle();
   });
   civicCentresLayer.setMap(map);
+
+  var wardToggle = document.getElementById("toggle-bounds");
+  wardToggle.addEventListener('click', function() { toggleLayer(wardToggle, wardLayer, map) });
 }
