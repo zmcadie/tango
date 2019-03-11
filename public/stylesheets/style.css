@@ -110,10 +110,9 @@ body {
   top: 1px;
 }
 
-/* #legend-container {
-  margin: 0 auto;
-  max-width: 800px;
-} */
+#legend-container {
+  min-height: 210px;
+}
 
 .legend-col {
   float: left;
@@ -223,4 +222,14 @@ body {
 .legend-notes-label {
   left: 20px;
   position: absolute;
+}
+
+#footer-container {
+  border-top: 1px solid #aaa;
+  font-size: 14px;
+  margin-top: 40px;
+}
+
+#footer-logos {
+  text-align: right;
 }
