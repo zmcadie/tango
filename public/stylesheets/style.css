@@ -108,3 +108,22 @@ body {
   position: relative;
   top: 1px;
 }
+
+.legend-item-symbol > * {
+  display: inline-block;
+}
+
+.legend-item-break {
+  padding: 0 5px;
+}
+
+.legend-item-break::before {
+  content: "-";
+}
+
+.legend-item-symbol .red-square {
+  background-color: #f006;
+  border: 1px solid #f00f;
+  height: 10px;
+  width: 10px;
+}
