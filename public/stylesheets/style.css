@@ -109,6 +109,10 @@ body {
   top: 1px;
 }
 
+.legend-item {
+  margin: 5px 0;
+}
+
 .legend-item-break {
   padding: 0 5px;
 }
@@ -119,8 +123,9 @@ body {
 
 .legend-item-symbol .square {
   display: inline-block;
-  height: 15px;
-  width: 15px;
+  height: 16px;
+  margin-bottom: -3px;
+  width: 16px;
 }
 
 .square.blue-square {
