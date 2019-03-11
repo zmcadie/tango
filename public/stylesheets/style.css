@@ -109,10 +109,6 @@ body {
   top: 1px;
 }
 
-.legend-item-symbol > * {
-  display: inline-block;
-}
-
 .legend-item-break {
   padding: 0 5px;
 }
@@ -121,9 +117,28 @@ body {
   content: "-";
 }
 
-.legend-item-symbol .red-square {
-  background-color: #f006;
+.legend-item-symbol .square {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+}
+
+.square.red-square {
+  background-color: #f008;
   border: 1px solid #f00f;
-  height: 10px;
-  width: 10px;
+}
+
+.square.purple-square {
+  background-color: #8088;
+  border: 1px solid #808f;
+}
+
+.square.green-square {
+  background-color: #0808;
+  border: 1px solid #080f;
+}
+
+.square.grey-square {
+  background-color: #0008;
+  border: 1px solid #000f;
 }
