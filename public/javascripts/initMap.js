@@ -19,14 +19,25 @@ function captureClose() {
 
 document.getElementById("capture-close").addEventListener("click", captureClose);
 
+function createFeatureItem(title, content) {
+  return "<div class='feature-item'><div class='feature-item-title'>" + title + "</div>" + content + "</div>";
+}
+
 function clickHandler(event) {
-  var feature = event.featureData;
-  console.log(feature)
-  var name = feature.name;
-  var description = feature.description || "";
-  var nameEl = "<div class='feature-item feature-name'><div class='feature-item-title'>name</div>" + name + "</div>";
-  var descriptionEl = "<div class='feature-item feature-description'><div class='feature-item-title'>description</div>" + description + "</div>";
-  var content = nameEl + descriptionEl;
+  var name = "";
+  var content = "";
+  if (event.featureData) {
+    var nameItem = createFeatureItem("name", event.featureData.name);
+    var descriptionItem = createFeatureItem("description", event.featureData.description || "");
+    name = event.featureData.name;
+    content += nameItem + descriptionItem;
+  } else {
+    name = event.feature.getProperty("name");
+    event.feature.forEachProperty(function(value, key) {
+      var item = createFeatureItem(key, value);
+      content += item;
+    });
+  }
   var captureTitle = document.getElementById('capture-title');
   var captureContent = document.getElementById('capture-content');
   captureTitle.innerHTML = name;
