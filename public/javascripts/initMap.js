@@ -124,4 +124,28 @@ function initMap() {
     tdsbLayer.revertStyle();
   });
   tdsbLayer.setMap(map);
+
+  var communityCentresLayer = new google.maps.Data();
+  communityCentresLayer.loadGeoJson("data/community_centres.geojson.json")
+  communityCentresLayer.setStyle({
+    icon: {
+      url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+      scaledSize: new google.maps.Size(32, 32)
+    },
+    zIndex: 2
+  })
+  communityCentresLayer.addListener('click', clickHandler);
+  communityCentresLayer.addListener('mouseover', function(e) {
+    communityCentresLayer.revertStyle();
+    communityCentresLayer.overrideStyle(e.feature, {
+      icon: {
+        url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+        scaledSize: new google.maps.Size(38, 38)
+      }
+    });
+  });
+  communityCentresLayer.addListener('mouseout', function(e) {
+    communityCentresLayer.revertStyle();
+  });
+  communityCentresLayer.setMap(map);
 }
