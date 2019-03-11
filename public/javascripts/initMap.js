@@ -102,7 +102,6 @@ function initMap() {
   libraryLayer.addListener('mouseout', function(e) {
     libraryLayer.revertStyle();
   });
-  libraryLayer.setMap(map);
 
   var tdsbLayer = new google.maps.Data();
   tdsbLayer.loadGeoJson("data/school_tdsb.geojson.json")
@@ -126,7 +125,6 @@ function initMap() {
   tdsbLayer.addListener('mouseout', function(e) {
     tdsbLayer.revertStyle();
   });
-  tdsbLayer.setMap(map);
 
   var communityCentresLayer = new google.maps.Data();
   communityCentresLayer.loadGeoJson("data/community_centres.geojson.json")
@@ -150,7 +148,6 @@ function initMap() {
   communityCentresLayer.addListener('mouseout', function(e) {
     communityCentresLayer.revertStyle();
   });
-  communityCentresLayer.setMap(map);
 
   var civicCentresLayer = new google.maps.Data();
   civicCentresLayer.loadGeoJson("data/civic_centres.geojson.json")
@@ -174,7 +171,14 @@ function initMap() {
   civicCentresLayer.addListener('mouseout', function(e) {
     civicCentresLayer.revertStyle();
   });
-  civicCentresLayer.setMap(map);
+
+  var meetingPlacesToggle = document.getElementById("toggle-meeting-places");
+  meetingPlacesToggle.addEventListener('click', function() {
+    toggleLayer(meetingPlacesToggle, libraryLayer, map);
+    toggleLayer(meetingPlacesToggle, tdsbLayer, map);
+    toggleLayer(meetingPlacesToggle, communityCentresLayer, map);
+    toggleLayer(meetingPlacesToggle, civicCentresLayer, map);
+  });
 
   var wardToggle = document.getElementById("toggle-bounds");
   wardToggle.addEventListener('click', function() { toggleLayer(wardToggle, wardLayer, map) });

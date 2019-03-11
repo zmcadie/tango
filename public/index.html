@@ -1,26 +1,27 @@
 <html>
 
-<head>
-  <title>Express</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+  <head>
+    <title>Express</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
 
-<body>
-  <div id="map-container">
-    <div id="map"></div>
-    <div id="capture">
-      <div id="capture-close">&times;</div>
-      <div id="capture-title"></div>
-      <div id="capture-content"></div>
+  <body>
+    <div id="map-container">
+      <div id="map"></div>
+      <div id="capture">
+        <div id="capture-close">&times;</div>
+        <div id="capture-title"></div>
+        <div id="capture-content"></div>
+      </div>
+      <div id="toggles-container">
+        <div><input id="toggle-bounds" type="checkbox" /><label>Ward Boundaries</label></div>
+        <div><input id="toggle-meeting-places" type="checkbox" /><label>Public Meeting Places</label></div>
+      </div>
     </div>
-    <div id="toggles-container">
-      <div><input id="toggle-bounds" type="checkbox" /><label>Ward Boundaries</label></div>
-    </div>
-  </div>
-  <script src="javascripts/initMap.js"></script>
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqfmEpJSUx1MM2ZhAhc2IHERd9npVQFUU&callback=initMap">
-  </script>
+    <script src="javascripts/initMap.js"></script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqfmEpJSUx1MM2ZhAhc2IHERd9npVQFUU&callback=initMap">
+    </script>
 </body>
 
 </html>
