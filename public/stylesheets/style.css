@@ -213,15 +213,10 @@ body {
   margin: 0 -3px -5px -4px;
 }
 
-.legend-notes-container {
-  font-size: 12px;
-  margin-top: 20px;
-  position: relative;
-}
-
 .legend-notes-label {
-  left: 20px;
-  position: absolute;
+  font-size: 12px;
+  margin-left: 46px;
+  margin-top: 2px;
 }
 
 #footer-container {
