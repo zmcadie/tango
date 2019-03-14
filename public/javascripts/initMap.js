@@ -78,7 +78,7 @@ function initMap() {
 
   var wardLayer = new google.maps.Data();
   wardLayer.loadGeoJson("data/toronto-wards.json");
-  wardLayer.setStyle({ fillColor: "transparent", strokeColor: "red", strokeWeight: 2, zIndex: 1 });
+  wardLayer.setStyle({ clickable: false, fillColor: "transparent", strokeColor: "red", strokeWeight: 2, zIndex: 1 });
 
   var libraryLayer = new google.maps.Data();
   libraryLayer.loadGeoJson("data/toronto-libraries.json")
