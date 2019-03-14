@@ -45,6 +45,19 @@ function clickHandler(event) {
   captureOpen();
 }
 
+function wardClickHandler(event) {
+  var name = event.feature.getProperty("AREA_NAME");
+  var nameItem = createFeatureItem("name", name);
+  var wardNumber = event.feature.getProperty("AREA_S_CD");
+  var wardItem = createFeatureItem("ward", wardNumber);
+  var content = nameItem + wardItem;
+  var captureTitle = document.getElementById('capture-title');
+  var captureContent = document.getElementById('capture-content');
+  captureTitle.innerHTML = name;
+  captureContent.innerHTML = content;
+  captureOpen();
+}
+
 function toggleLayer(element, layer, map) {
   element.checked ? layer.setMap(map) : layer.setMap(null);
 }
@@ -78,7 +91,17 @@ function initMap() {
 
   var wardLayer = new google.maps.Data();
   wardLayer.loadGeoJson("data/toronto-wards.json");
-  wardLayer.setStyle({ clickable: false, fillColor: "transparent", strokeColor: "red", strokeWeight: 2, zIndex: 1 });
+  wardLayer.setStyle({ fillColor: "transparent", strokeColor: "red", strokeWeight: 2, zIndex: 1 });
+  wardLayer.addListener('click', wardClickHandler);
+  wardLayer.addListener('mouseover', function(e) {
+    wardLayer.revertStyle();
+    wardLayer.overrideStyle(e.feature, {
+      fillColor: "red"
+    });
+  });
+  wardLayer.addListener('mouseout', function(e) {
+    wardLayer.revertStyle();
+  });
 
   var libraryLayer = new google.maps.Data();
   libraryLayer.loadGeoJson("data/toronto-libraries.json")
