@@ -80,7 +80,7 @@ function initMap() {
   });
 
   map.data.loadGeoJson("data/toronto-boundary.json");
-  map.data.setStyle({ strokeWeight: 0, fillOpacity: 0.15, clickable: false });
+  map.data.setStyle({ strokeWeight: 0, fillOpacity: 0.3, clickable: false });
 
   var raKmlLayer = new google.maps.KmlLayer(resedentialAssociationsSrc, {
     suppressInfoWindows: true,
