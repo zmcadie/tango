@@ -23,6 +23,12 @@ function createFeatureItem(title, content) {
   return "<div class='feature-item'><div class='feature-item-title'>" + title + "</div>" + content + "</div>";
 }
 
+function toCapitalCase(str) {
+  var lowerStr = str.toLowerCase();
+  var capitalStr = lowerStr.replace(/\b\w/g, function(c){ return c.toUpperCase() });
+  return capitalStr;
+}
+
 function clickHandler(event) {
   var name = "";
   var content = "";
@@ -32,9 +38,10 @@ function clickHandler(event) {
     name = event.featureData.name;
     content += nameItem + descriptionItem;
   } else {
-    name = event.feature.getProperty("name");
+    name = toCapitalCase(event.feature.getProperty("name"));
     event.feature.forEachProperty(function(value, key) {
-      var item = createFeatureItem(key, value);
+      var capitalValue = key === "postal code" ? value : toCapitalCase(value || "");
+      var item = createFeatureItem(key, capitalValue);
       content += item;
     });
   }
@@ -126,27 +133,27 @@ function initMap() {
     libraryLayer.revertStyle();
   });
 
-  var tdsbLayer = new google.maps.Data();
-  tdsbLayer.loadGeoJson("data/school_tdsb.geojson.json")
-  tdsbLayer.setStyle({
+  var publicSchoolLayer = new google.maps.Data();
+  publicSchoolLayer.loadGeoJson("data/toronto_schools.geojson.json")
+  publicSchoolLayer.setStyle({
     icon: {
       url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
       scaledSize: new google.maps.Size(32, 32)
     },
     zIndex: 2
   })
-  tdsbLayer.addListener('click', clickHandler);
-  tdsbLayer.addListener('mouseover', function(e) {
-    tdsbLayer.revertStyle();
-    tdsbLayer.overrideStyle(e.feature, {
+  publicSchoolLayer.addListener('click', clickHandler);
+  publicSchoolLayer.addListener('mouseover', function(e) {
+    publicSchoolLayer.revertStyle();
+    publicSchoolLayer.overrideStyle(e.feature, {
       icon: {
         url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
         scaledSize: new google.maps.Size(38, 38)
       }
     });
   });
-  tdsbLayer.addListener('mouseout', function(e) {
-    tdsbLayer.revertStyle();
+  publicSchoolLayer.addListener('mouseout', function(e) {
+    publicSchoolLayer.revertStyle();
   });
 
   var communityCentresLayer = new google.maps.Data();
@@ -198,7 +205,7 @@ function initMap() {
   var meetingPlacesToggle = document.getElementById("toggle-meeting-places");
   meetingPlacesToggle.addEventListener('click', function() {
     toggleLayer(meetingPlacesToggle, libraryLayer, map);
-    toggleLayer(meetingPlacesToggle, tdsbLayer, map);
+    toggleLayer(meetingPlacesToggle, publicSchoolLayer, map);
     toggleLayer(meetingPlacesToggle, communityCentresLayer, map);
     toggleLayer(meetingPlacesToggle, civicCentresLayer, map);
   });
