@@ -23,12 +23,6 @@ function createFeatureItem(title, content) {
   return "<div class='feature-item'><div class='feature-item-title'>" + title + "</div>" + content + "</div>";
 }
 
-function toCapitalCase(str) {
-  var lowerStr = str.toLowerCase();
-  var capitalStr = lowerStr.replace(/\b\w/g, function(c){ return c.toUpperCase() });
-  return capitalStr;
-}
-
 function clickHandler(event) {
   var name = "";
   var content = "";
@@ -38,10 +32,8 @@ function clickHandler(event) {
     name = event.featureData.name;
     content += nameItem + descriptionItem;
   } else {
-    name = toCapitalCase(event.feature.getProperty("name"));
     event.feature.forEachProperty(function(value, key) {
-      var capitalValue = key === "postal code" ? value : toCapitalCase(value || "");
-      var item = createFeatureItem(key, capitalValue);
+      var item = createFeatureItem(key, value);
       content += item;
     });
   }
