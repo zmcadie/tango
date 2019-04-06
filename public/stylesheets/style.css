@@ -199,6 +199,11 @@ body {
   border-color: #080f;
 }
 
+.square.yellow-square {
+  background-color: #E6B24588;
+  border-color: #E6B245ff;
+}
+
 .square.grey-square {
   background-color: #0008;
   border-color: #000f;
