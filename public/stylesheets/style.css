@@ -112,6 +112,8 @@ body {
 
 #legend-container {
   min-height: 210px;
+  overflow: auto;
+  width: 100%;
 }
 
 .legend-col {
@@ -200,8 +202,13 @@ body {
 }
 
 .square.yellow-square {
-  background-color: #E6B24588;
-  border-color: #E6B245ff;
+  background-color: #FFFD5488;
+  border-color: #FFFD54ff;
+}
+
+.square.orange-square {
+  background-color: #ED9D4488;
+  border-color: #ED9D44ff;
 }
 
 .square.grey-square {
