@@ -238,5 +238,19 @@ body {
 }
 
 #footer-logos {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
   text-align: right;
+}
+
+#footer-logos .logo-link {
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+#footer-logos .logo-link img {
+  height: 42px;
+  margin-bottom: 10px;
 }
