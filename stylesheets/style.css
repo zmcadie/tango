@@ -216,6 +216,11 @@ body {
   border-color: #000f;
 }
 
+.square.brown-square {
+  background-color: #73534888;
+  border-color: #735348ff;
+}
+
 .square.empty {
   background-color: transparent;
 }
